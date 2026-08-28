@@ -1,5 +1,6 @@
-const CACHE_NAME='shieldfall-v1';
-const APP_SHELL=['./','./index.html','./app.gz.b64','./manifest.webmanifest','./icon.svg','./icon-maskable.svg'];
+const CACHE_NAME='shieldfall-v2';
+const CHUNKS=Array.from({length:8},(_,i)=>`./app/chunk${String(i).padStart(2,'0')}.b64`);
+const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-maskable.svg',...CHUNKS];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));
