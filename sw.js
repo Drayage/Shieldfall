@@ -1,5 +1,9 @@
-const CACHE_NAME='shieldfall-v2';
-const CHUNKS=Array.from({length:8},(_,i)=>`./app/chunk${String(i).padStart(2,'0')}.b64`);
+const CACHE_NAME='shieldfall-v3';
+const CHUNKS=[
+  './app/chunk00.b64','./app/chunk01a.b64','./app/chunk01b.b64',
+  './app/chunk02.b64','./app/chunk03.b64','./app/chunk04.b64',
+  './app/chunk05.b64','./app/chunk06.b64','./app/chunk07.b64'
+];
 const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-maskable.svg',...CHUNKS];
 
 self.addEventListener('install',event=>{
