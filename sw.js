@@ -1,10 +1,5 @@
-const CACHE_NAME='shieldfall-v3';
-const CHUNKS=[
-  './app/chunk00.b64','./app/chunk01a.b64','./app/chunk01b.b64',
-  './app/chunk02.b64','./app/chunk03.b64','./app/chunk04.b64',
-  './app/chunk05.b64','./app/chunk06.b64','./app/chunk07.b64'
-];
-const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-maskable.svg',...CHUNKS];
+const CACHE_NAME='shieldfall-v4';
+const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-maskable.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));
@@ -26,14 +21,11 @@ self.addEventListener('fetch',event=>{
     }).catch(()=>caches.match('./index.html')));
     return;
   }
-  event.respondWith(caches.match(event.request).then(cached=>{
-    const network=fetch(event.request).then(response=>{
-      if(response&&response.ok&&new URL(event.request.url).origin===self.location.origin){
-        const copy=response.clone();
-        caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy));
-      }
-      return response;
-    }).catch(()=>cached);
-    return cached||network;
-  }));
+  event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{
+    if(response&&response.ok&&new URL(event.request.url).origin===self.location.origin){
+      const copy=response.clone();
+      caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy));
+    }
+    return response;
+  })));
 });
