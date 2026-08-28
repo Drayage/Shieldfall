@@ -1,4 +1,4 @@
-const CACHE_NAME='shieldfall-v4';
+const CACHE_NAME='shieldfall-v5';
 const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-maskable.svg'];
 
 self.addEventListener('install',event=>{
