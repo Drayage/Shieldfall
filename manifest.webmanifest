@@ -1,0 +1,16 @@
+{
+  "name": "Shieldfall",
+  "short_name": "Shieldfall",
+  "description": "숨겨진 실드와 마나 운영을 중심으로 한 전술 카드 배틀",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0d1014",
+  "theme_color": "#0d1014",
+  "lang": "ko-KR",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},
+    {"src":"./icon-maskable.svg","sizes":"any","type":"image/svg+xml","purpose":"maskable"}
+  ]
+}
