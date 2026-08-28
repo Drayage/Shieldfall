@@ -4,7 +4,7 @@
 
 - GitHub Pages: `https://drayage.github.io/Shieldfall/`
 - PWA: 지원 브라우저의 **앱 설치 / 홈 화면에 추가** 기능으로 설치할 수 있습니다.
-- 오프라인: 최초 접속 후 Service Worker가 게임 본체와 PWA 셸을 캐시합니다.
+- 오프라인: 최초 접속 후 Service Worker가 게임 본체, 카드 원화 42장과 PWA 셸을 캐시합니다.
 
 ## 최초 1회: GitHub Pages 활성화
 
@@ -24,12 +24,12 @@
 1. `scripts/build_pages.py` 실행
 2. gzip+base64 payload를 원본 Shieldfall HTML로 복원
 3. SHA-256 체크섬으로 원본 일치 여부 검증
-4. `_site/index.html`과 PWA 파일 생성
+4. `_site/index.html`, 카드 원화와 PWA 파일 생성
 5. GitHub Pages에 `_site` 배포
 
 현재 검증 대상 HTML SHA-256:
 
-`358999ad4b87eeda7af5ef8fbd36bfb6749ffb87c052d628436de400abd8b7ec`
+`53e8243ea673ec146d1175e8dc33146486de1d046355056ea0d803c5b1057b26`
 
 ## 저장소 구조
 
@@ -37,10 +37,13 @@
 - `app/chunk00.b64`
 - `app/chunk01a.b64`, `app/chunk01b.b64`
 - `app/chunk02.b64` ~ `app/chunk07.b64`
+- `assets/cards/*.webp` — 모바일용 카드별 생성 일러스트 42장
 - `scripts/build_pages.py` — Pages용 완성 HTML 생성 및 체크섬 검증
+- `scripts/pack_payload.py` — 완성 HTML을 payload로 패킹하고 체크섬 갱신
+- `scripts/prepare_card_art.py` — 카드 원화를 640×960 WebP로 정규화
 - `manifest.webmanifest` — PWA manifest
 - `sw.js` — 오프라인 캐시 Service Worker
 - `icon.svg`, `icon-maskable.svg` — PWA 아이콘
 - `.github/workflows/deploy-pages.yml` — 자동 Pages 배포
 
-게임을 수정할 때는 원본 단일 HTML을 다시 gzip+base64로 만들고 payload 조각 및 `EXPECTED_HTML_SHA256`을 갱신하면 됩니다.
+게임을 수정할 때는 완성 HTML에 대해 `python scripts/pack_payload.py <HTML 경로>`를 실행하면 payload 조각과 체크섬이 함께 갱신됩니다.

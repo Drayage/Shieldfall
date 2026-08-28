@@ -19,7 +19,7 @@ PARTS = [
     "app/chunk06.b64",
     "app/chunk07.b64",
 ]
-EXPECTED_HTML_SHA256 = "358999ad4b87eeda7af5ef8fbd36bfb6749ffb87c052d628436de400abd8b7ec"
+EXPECTED_HTML_SHA256 = "53e8243ea673ec146d1175e8dc33146486de1d046355056ea0d803c5b1057b26"
 
 encoded = "".join("".join((ROOT / part).read_text(encoding="utf-8").split()) for part in PARTS)
 compressed = base64.b64decode(encoded, validate=True)
@@ -37,6 +37,8 @@ SITE.mkdir(parents=True)
 
 for name in ["manifest.webmanifest", "sw.js", "icon.svg", "icon-maskable.svg"]:
     shutil.copy2(ROOT / name, SITE / name)
+
+shutil.copytree(ROOT / "assets", SITE / "assets")
 
 (SITE / ".nojekyll").write_text("", encoding="utf-8")
 print(f"Built Shieldfall Pages site: {len(html):,} bytes, sha256={actual_sha256}")
