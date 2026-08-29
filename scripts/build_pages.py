@@ -19,7 +19,7 @@ PARTS = [
     "app/chunk06.b64",
     "app/chunk07.b64",
 ]
-EXPECTED_HTML_SHA256 = "9cf9952ad4716252a6c3843aa3c5fbc3c5af59b2714959f34f2d23eb71a256ae"
+EXPECTED_HTML_SHA256 = "a536eba266e8db43afd87f9f47ac17663dbec6491bf6fd8b3915ab5c0aa83a57"
 
 encoded = "".join("".join((ROOT / part).read_text(encoding="utf-8").split()) for part in PARTS)
 compressed = base64.b64decode(encoded, validate=True)
