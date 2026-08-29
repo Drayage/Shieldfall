@@ -1,4 +1,4 @@
-const CACHE_NAME='shieldfall-v11';
+const CACHE_NAME='shieldfall-v12';
 const CARD_IDS=[
   'basic_attack','ambush','mid_attack','heavy_attack','mana_burst','shield_swap','rage_strike','backs_to_wall','finisher',
   'time_bomb','long_bomb1','long_bomb2','mid_bomb','big_bomb','persistent_shot','decay_persistent','growth_persistent','erosion_persistent','ultimate_persistent',
