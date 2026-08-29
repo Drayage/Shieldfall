@@ -19,9 +19,9 @@
   try{
     if(!('DecompressionStream' in window)) throw new Error('압축 게임 데이터를 지원하지 않는 브라우저입니다. 최신 Chrome/Edge/Safari에서 열어주세요.');
     const paths=[
-      './app/chunk00.b64?v=17abc14698a7','./app/chunk01a.b64?v=17abc14698a7','./app/chunk01b.b64?v=17abc14698a7',
-      './app/chunk02.b64?v=17abc14698a7','./app/chunk03.b64?v=17abc14698a7','./app/chunk04.b64?v=17abc14698a7',
-      './app/chunk05.b64?v=17abc14698a7','./app/chunk06.b64?v=17abc14698a7','./app/chunk07.b64?v=17abc14698a7'
+      './app/chunk00.b64?v=c7c0b90c15b7','./app/chunk01a.b64?v=c7c0b90c15b7','./app/chunk01b.b64?v=c7c0b90c15b7',
+      './app/chunk02.b64?v=c7c0b90c15b7','./app/chunk03.b64?v=c7c0b90c15b7','./app/chunk04.b64?v=c7c0b90c15b7',
+      './app/chunk05.b64?v=c7c0b90c15b7','./app/chunk06.b64?v=c7c0b90c15b7','./app/chunk07.b64?v=c7c0b90c15b7'
     ];
     const parts=await Promise.all(paths.map(path=>fetch(path).then(r=>{if(!r.ok)throw new Error(`게임 데이터 로드 실패: ${path}`);return r.text()})));
     const b64=parts.join('').replace(/\s+/g,'');
