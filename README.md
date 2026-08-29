@@ -29,7 +29,7 @@
 
 현재 검증 대상 HTML SHA-256:
 
-`8525dd4390c383da586b4b7116a27fc11765ddf6de3a3c963d8d9e797f9ecddf`
+`cef0b8dbd45cc780620fcf8c498258aa70d6d0d6f90ed47307c9b9d12f5b6d1f`
 
 ## 저장소 구조
 
